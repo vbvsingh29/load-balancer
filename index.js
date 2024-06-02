@@ -1,8 +1,12 @@
 const express = require("express");
 const { routeRequest } = require("./routes/mockApis.js");
-const axios = require('axios');
+const axios = require("axios");
 const app = express();
 const PORT = process.env.PORT || 3000;
+const cors = require("cors");
+
+// Enable CORS for all routes(for testing will enable restriction to client-side only later)
+app.use(cors());
 
 app.use(express.json());
 
