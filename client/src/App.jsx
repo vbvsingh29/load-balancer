@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
-import './styles.css';
+import React, { useState } from "react";
+import "./styles.css";
 
 function App() {
-  const [apiType, setApiType] = useState('REST');
+  const [apiType, setApiType] = useState("REST");
   const [payloadSize, setPayloadSize] = useState(100);
   const [response, setResponse] = useState(null);
   const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setResponse(null);  // Clear previous response
-    setError(null);     // Clear previous error
-    const payload = { size: payloadSize, type: 'json' };
-
+    setResponse(null); // Clear previous response
+    setError(null); // Clear previous error
+    const payload = { size: payloadSize, type: "json" };
+    console.log(process.env.REACT_APP_API_ROOT_URL, "ACD");
     try {
-      const res = await fetch('http://localhost:3000/route', {
-        method: 'POST',
+      const res = await fetch(`${process.env.REACT_APP_API_ROOT_URL}/route`, {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({ apiType, payload }),
       });
