@@ -15,7 +15,6 @@ const simulateResponse = async (url) => {
 
 const routeRequest = async (req, res) => {
   const { apiType, payload } = req.body;
-  console.log(apiType, payload, "TEST");
   let endpoint;
   switch (apiType) {
     case "REST":
